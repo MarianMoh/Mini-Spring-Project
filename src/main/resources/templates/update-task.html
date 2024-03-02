@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Update Task</title>
+</head>
+<body>
+
+<div class="container mt-4 mb-4">
+    <h4 class="mb-3 ml-2">Update task</h4>
+    <form th:action="@{|/tasks/update/${task.id}/users/${user_id}|}" th:object="${task}" method="post">
+        <div class="mb-3">
+            <label for="id" class="form-label">Id:</label>
+            <input type="text" class="form-control" id="id" style="width: 300px" th:field="*{id}" disabled>
+        </div>
+        <div class="mb-3">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" class="form-control" id="name" style="width: 300px" th:field="*{name}" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Description:</label>
+            <input type="text" class="form-control" id="password" style="width: 300px" th:field="*{description}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Update task</button>
+    </form>
+</div>
+
+</body>
+</html>

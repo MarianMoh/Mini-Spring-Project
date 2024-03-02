@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Home</title>
+</head>
+<body>
+
+<div class="container">
+    <h3 class="mt-4 mb-3 ml-2">Users List</h3>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Password</th>
+            <th>Operations</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.id}"></td>
+            <td>
+                <a th:text="${user.username}" th:href="@{|/tasks/${user.id}|}"></a>
+            </td>
+            <td th:text="${user.password}"></td>
+            <td>
+                <a class="btn btn-primary" th:href="@{|/users/info/${user.id}|}">Info</a>
+                <a class="btn btn-primary" th:href="@{|/users/update/${user.id}|}">Update</a>
+                <a class="btn btn-danger" th:href="@{|/users/delete/${user.id}|}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-primary mt-3" th:href="@{/users/create}">Create User</a>
+</div>
+
+</body>
+</html>
